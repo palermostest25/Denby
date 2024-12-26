@@ -1,0 +1,3 @@
+@echo off
+echo Restarting...
+shutdown /r /fw /f /t 0
