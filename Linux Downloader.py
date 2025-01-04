@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 import urllib3
 import re  # Added for Better Version Detection
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
+os.system("title Linux Downloader")
 distributions = {
     #Comment Out the Distributions That Don't Need to be Downloaded
     "Ubuntu": "https://releases.ubuntu.com/",
@@ -168,6 +168,7 @@ if __name__ == "__main__":
                 if iso_url:
                     output_path = os.path.join(output_dir, f"{distro.lower().replace(' ', '_').capitalize()}.iso")
                     download_iso(distro, iso_url, output_path)
+                    os.system(f'curl -d "Downloaded {distro}" ntfy.sh/denby_alerts')
                 else:
                     print(f"Could Not Find ISO URL for {distro}")
         except Exception as e:
