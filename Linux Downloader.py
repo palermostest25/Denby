@@ -6,7 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import os
 import requests
-from bs4 import BeautifulSoup
+dfrom bs4 import BeautifulSoup
 import urllib3
 import re  # Added for Better Version Detection
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -60,6 +60,7 @@ def download_ubuntu():
         print(f"Ubuntu URL: {ubuntu_iso_url}")
         output_path = os.path.join(output_dir, "Ubuntu.iso")
         download_iso("Ubuntu", ubuntu_iso_url, output_path)
+        os.system(f'curl -d "Downloaded Ubuntu" ntfy.sh/denby_alerts')
     
     except Exception as e:
         print(f"Failed to Download Ubuntu: {e}")
@@ -78,6 +79,7 @@ def download_debian():
         print(f"Debian URL: {debian_iso_url}")
         output_path = os.path.join(output_dir, "Debian.iso")
         download_iso("Debian", debian_iso_url, output_path)
+        os.system(f'curl -d "Downloaded Debian" ntfy.sh/denby_alerts')
 
     except Exception as e:
         print(f"Failed to Download Debian: {e}")
@@ -113,6 +115,7 @@ def download_pop_os(output_dir):
                 f.write(chunk)
 
         print(f"Downloaded Pop!_OS ISO to {iso_path}")
+        os.system(f'curl -d "Downloaded Pop!_OS" ntfy.sh/denby_alerts')
     except Exception as e:
         print(f"Error Occurred: {e}")
     finally:
